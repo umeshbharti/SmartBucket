@@ -11,6 +11,6 @@ public class SmartbucketApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SmartbucketApplication.class, args);
-		System.out.println("Test 111");
+		System.out.println("Test 333");
 	}
 }
