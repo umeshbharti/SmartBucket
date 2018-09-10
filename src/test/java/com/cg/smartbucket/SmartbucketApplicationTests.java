@@ -9,6 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SmartbucketApplicationTests {
 
+	// new Test changes --2	
+	//Git changes locally
 	@Test
 	public void contextLoads() {
 	}
