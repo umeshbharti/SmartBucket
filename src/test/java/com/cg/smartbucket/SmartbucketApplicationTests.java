@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SmartbucketApplicationTests {
 
-	// Test changes	
+	// new Test changes --2	
 	@Test
 	public void contextLoads() {
 	}
