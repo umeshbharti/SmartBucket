@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SmartbucketApplicationTests {
-	//66 locally
+	//77 Globally
 	@Test
 	public void contextLoads() {
 	}
