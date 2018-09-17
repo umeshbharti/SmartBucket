@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SmartbucketApplicationTests {
 	//11 locally 
-	@Test
+/*	@Test
 	public void contextLoads() {
-	}
+	}*/
 
 }
