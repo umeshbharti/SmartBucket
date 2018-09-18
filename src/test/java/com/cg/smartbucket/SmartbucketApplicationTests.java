@@ -8,8 +8,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SmartbucketApplicationTests {
-// local changes 3
-// Gloabl changes 3
+// local changes 4
+// Gloabl changes 4
 /*	@Test
 	public void contextLoads() {
 	}*/
