@@ -1,5 +1,6 @@
 package com.cg.smartbucket.service;
 
+import java.util.Base64;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,21 +21,34 @@ public class ServiceProviderImpl {
 	private UserRepository userRepository;
 	
 	public boolean addUser(User user){
+		//user.setPassword(encodePassword(user.getPassword()));
 		return userRepository.save(user)!=null?true:false;
 	}
 	
-	public void validateUser(Login loginDetails){
+	public boolean validateUser(Login loginDetails){
 		User loggedUser = getUser(loginDetails.getEmail()); 
 		if(loggedUser == null){
 			logger.info("User not found");
+			return false;
 		}
-		 if(loggedUser!=null && (loggedUser.getPassword().trim().equals(loginDetails.getPassword().trim()))){
+		 //if(loggedUser!=null && (loggedUser.getPassword().trim().equals(encodePassword(loginDetails.getPassword().trim())))){
+		 if(loggedUser!=null && (loggedUser.getPassword().trim().equals(loginDetails.getPassword().trim()))){	 
 			 logger.info("Login successful");
+			 return true;
 		 }
+		 return false;
 		
 	}
 	private User getUser(String email){
 		return userRepository.findByEmail(email);
+	}
+	
+	private String encodePassword(String password){
+		return Base64.getEncoder().encodeToString(password.toString().getBytes());
+	}
+	
+	private String decodePassword(String encodedPassword){
+		return Base64.getDecoder().decode(encodedPassword).toString();
 	}
 	
 }

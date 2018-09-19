@@ -17,8 +17,7 @@ public class RedirectController {
 	ServiceProviderImpl provider;
 	
 	@RequestMapping(value="/signuppage")
-	public String signUpPage(){
-		
+	public String signUpPage(){	
 		return "newsignup";
 	}
 	
@@ -31,8 +30,16 @@ public class RedirectController {
 	}
 	
 	@RequestMapping(value="/login",method = RequestMethod.GET)
-	public void login(@ModelAttribute Login loginDetails){
-		provider.validateUser(loginDetails);
+	public String login(@ModelAttribute Login loginDetails){
+		if(provider.validateUser(loginDetails)){
+			return "loginsuccess";
+		}
+		return "index";
 			
+	}
+	
+	@RequestMapping(value="/")
+	public String loginReturn(){
+		return "index";
 	}
 }
