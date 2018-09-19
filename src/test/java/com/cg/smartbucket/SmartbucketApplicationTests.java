@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SmartbucketApplicationTests {
 // local changes 5
-// Gloabl changes 5
+// Gloabl changes 6
 /*	@Test
 	public void contextLoads() {
 	}*/
