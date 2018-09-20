@@ -1,5 +1,9 @@
 
-
+html {
+  background-image: url("/images/5.jpg");
+  background-repeat: repeat;
+  
+}
 
 * {box-sizing: border-box}
 
@@ -87,7 +91,7 @@ button:hover {
 .container {
   padding: 16px;
   background-color:white;
-  margin: 20px 0px 20px 110px;
+  margin: 20px 400px 20px 350px;
   border-radius:30px;
   color:#56baed;
   width: 600px;

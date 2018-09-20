@@ -3,7 +3,9 @@
 /* BASIC */
 
 html {
-  background-color: #ffc107; /*#56baed*/
+  background-image: url("/images/10.jpg");
+  background-repeat: repeat;
+  
 }
 
 body {
@@ -194,7 +196,7 @@ h3{
   /*-webkit-border-radius: 10px 10px 10px 10px;*/
    margin: 5px 15px 5px 25px; 
   border-radius: 30px 30px 30px 30px;
-  background: #fff;
+  
   padding: 30px;
   width: 90%;
   max-width: 450px;
@@ -203,6 +205,8 @@ h3{
   /*-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);*/
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
+  background-color: white;
+  border-color: black;
 }
 
 #formContent1 {
