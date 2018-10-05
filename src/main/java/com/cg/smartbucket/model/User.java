@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -18,20 +20,28 @@ public class User {
 	@GeneratedValue(generator="ref")
 	@Column(name="id",nullable=false,unique=true)
 	private int id;
+	
 	@Column(name="username",nullable=false)
 	private String name;
+	
 	@Column(name="email",nullable=false,unique=true)
 	private String email;
+	
 	@Column(name="contactnumber",nullable=false,unique=true)
 	private long number;
+	
 	@Column(name="password",nullable=false)
 	private String password;
 	
 	@Transient
 	private String repeatPassword;
 	
-	@Column(name="isAdmin",nullable=false)
-	private boolean isAdmin=false;
+	@OneToOne
+	@JoinColumn(name="role_id")
+	private UserRole role = new UserRole(1,"USER");
+	
+	@Column(name="enabled")
+	private boolean enabled=true;
 	
 	public User() {
 		super();
@@ -43,6 +53,14 @@ public class User {
 		this.email = email;
 		this.number = number;
 		this.password = password;
+	}
+	
+	public UserRole getUserrole() {
+		return role;
+	}
+
+	public void setUserrole(UserRole role) {
+		this.role = role;
 	}
 
 	public String getRepeatPassword() {
@@ -93,11 +111,20 @@ public class User {
 		this.id = id;
 	}
 
-	public boolean isAdmin() {
-		return isAdmin;
+	public UserRole getRole() {
+		return role;
 	}
 
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
-	}	
+	public void setRole(UserRole role) {
+		this.role = role;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
 }
