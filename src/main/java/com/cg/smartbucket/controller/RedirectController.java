@@ -42,4 +42,9 @@ public class RedirectController {
 	public String loginReturn(){
 		return "index";
 	}
+	
+	@RequestMapping(value="/adminLoginSuccess")
+	public String adminLogin(){
+		return "loginsuccess";
+	}
 }
