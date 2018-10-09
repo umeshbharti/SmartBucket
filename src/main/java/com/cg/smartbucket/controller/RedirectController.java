@@ -21,7 +21,7 @@ public class RedirectController {
 		return "newsignup";
 	}
 	
-	@RequestMapping(value="/signup",method = RequestMethod.GET)
+	@RequestMapping(value="/signupUser",method = RequestMethod.POST)
 	public String userSignUp(@ModelAttribute User user){
 		if(provider.addUser(user)== true)
 		return "signupsuccess";
@@ -29,13 +29,23 @@ public class RedirectController {
 		return "newsignup";
 	}
 	
-	@RequestMapping(value="/login",method = RequestMethod.GET)
+/*	@RequestMapping(value = "/error")
+	public void handleerror() {
+		System.out.println("This is error");
+	}*/
+	
+	@RequestMapping(value="/loginUser",method = RequestMethod.POST)
 	public String login(@ModelAttribute Login loginDetails){
 		if(provider.validateUser(loginDetails)){
 			return "loginsuccess";
 		}
 		return "index";
 			
+	}
+	
+	@RequestMapping(value="/admin")
+	public String adminTest() {
+		return "adminPage";
 	}
 	
 	@RequestMapping(value="/")

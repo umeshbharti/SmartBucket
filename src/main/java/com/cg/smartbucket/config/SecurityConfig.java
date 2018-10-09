@@ -16,29 +16,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	DataSource datasource;
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
+
 		http.authorizeRequests()
 		.antMatchers("/").permitAll()
 		.antMatchers("/admin").hasRole("ADMIN")
 		.and()
-		.formLogin()
-		.successForwardUrl("/adminLoginSuccess");
+		.formLogin();
+		http
+		.csrf().disable();		
 	}
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
 		auth
 		.jdbcAuthentication()
-		.dataSource(datasource)
+		.dataSource(datasource).passwordEncoder(new BCryptPasswordEncoder())
 		.usersByUsernameQuery("select username, password, enabled from user_details where username=?")
-		.authoritiesByUsernameQuery("select sd.username, sr.role from user_role sr,user_details sd where sd.role_id = sr.role_id and sd.username=?")
-		.passwordEncoder(new BCryptPasswordEncoder());
-		
-		System.out.println("Test authentucation **************");
-		
+		.authoritiesByUsernameQuery("select sd.username, sr.role from user_role sr,user_details sd where sd.role_id = sr.role_id and sd.username=?");
 	}
 }
