@@ -1,5 +1,7 @@
 package com.cg.smartbucket.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,13 +37,14 @@ public class RedirectController {
 	}*/
 	
 	@RequestMapping(value="/loginUser",method = RequestMethod.POST)
-	public String login(@ModelAttribute Login loginDetails){
+	public String login(@ModelAttribute Login loginDetails, HttpServletRequest request){
 		if(provider.validateUser(loginDetails)){
+			request.getSession().setMaxInactiveInterval(60);
 			return "loginsuccess";
 		}
 		return "index";
-			
 	}
+		
 	
 	@RequestMapping(value="/admin")
 	public String adminTest() {
@@ -56,5 +59,11 @@ public class RedirectController {
 	@RequestMapping(value="/adminLoginSuccess")
 	public String adminLogin(){
 		return "loginsuccess";
+	}
+	
+	@RequestMapping(value="/invalidate")
+	public String destroySession(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "index";
 	}
 }
