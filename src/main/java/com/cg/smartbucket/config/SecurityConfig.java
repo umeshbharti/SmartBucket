@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
@@ -26,7 +27,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin();
 		http
-		.csrf().disable();		
+		.csrf().disable();
+		
+		http.
+		sessionManagement().maximumSessions(1);
+		http.
+		sessionManagement().invalidSessionUrl("/");
+		
+		http.sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+		
+		http.sessionManagement()
+		  .sessionFixation().migrateSession();
+			
 	}
 
 	@Override
